@@ -45,6 +45,22 @@ function play(random=false){const wanted=random?'random':'solve';if(mode===wante
 async function init(){
   const response=await fetch('./graph.json');if(!response.ok)throw Error('局面数据加载失败，请刷新重试。');const data=await response.json();model=createModel(data);board=data.initial;current=model.initial;
   view=new GraphView($('graph'),$('overlay'),model,jump);
+  const originalPositions=model.nodes.map(n=>n.slice(1,4));
+  let rebuiltPositions=null,activeLayout='original';
+  $('layout').disabled=false;
+  $('layout').onchange=async()=>{
+    stop();const wanted=$('layout').value;$('layout').disabled=true;
+    try{
+      if(wanted==='rebuilt'&&!rebuiltPositions){
+        const r=await fetch('./layout-rebuilt.json');if(!r.ok)throw Error('重新生成的布局加载失败');
+        const result=await r.json();rebuiltPositions=result.positions;
+      }
+      view.setPositions(wanted==='original'?originalPositions:rebuiltPositions);activeLayout=wanted;
+      $('layout-note').textContent=wanted==='original'?'作者公开的预计算坐标':'从连线重新计算 · 力导向 + 镜像约束 · 非逐点还原';
+      const url=new URL(location.href);if(wanted==='original')url.searchParams.delete('layout');else url.searchParams.set('layout','rebuilt');window.history.replaceState(null,'',url);
+    }catch(error){$('layout').value=activeLayout;$('status').textContent=error.message;}
+    finally{$('layout').disabled=false;}
+  };
   for(const id of ['play','step','random','reset'])$(id).disabled=false;
   $('loading').remove();$('graph-count').textContent=`${model.nodes.length.toLocaleString()} 个局面 · ${model.solutionCount} 个出口局面`;
   render();
@@ -63,5 +79,6 @@ async function init(){
     $('color-legend').textContent={structure:'连线表示一次合法移动 · 空间位置由布局决定',distance:'青绿：接近出口 → 紫红：远离出口',relation:'红：方块在横条上方 · 橙：并排 · 黄：部分越过 · 绿：已在下方'}[$('color').value]+($('local').checked?' · 高亮当前局面 8 步内邻域':'');
   };
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+  if(new URLSearchParams(location.search).get('layout')==='rebuilt'){$('layout').value='rebuilt';await $('layout').onchange();}
 }
 init().catch(error=>{$('status').textContent=error.message;const loading=$('loading');if(loading)loading.textContent=error.message;console.error(error);});

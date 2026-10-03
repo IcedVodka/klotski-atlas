@@ -70,6 +70,11 @@ export class GraphView {
     const loop = now=>{if(this.autoRotate){this.yaw+=Math.min(50,now-(this.lastTime||now))*.00009;this.dirty=true;}this.lastTime=now;if(this.dirty)this.render();requestAnimationFrame(loop);};requestAnimationFrame(loop);
   }
   reset(){this.yaw=.38;this.pitch=.13;this.zoom=1;this.pan=[0,-.01];this.dirty=true;}
+  setPositions(positions){
+    if(positions.length!==this.model.nodes.length || positions.some(p=>p.length!==3||p.some(v=>!Number.isFinite(v))))throw Error('布局坐标不完整');
+    positions.forEach((p,i)=>{this.model.nodes[i].splice(1,3,...p);});
+    this.update();this.reset();
+  }
   resize(){const r=this.canvas.getBoundingClientRect();this.width=r.width;this.height=r.height;this.dpr=Math.min(devicePixelRatio,2);for(const c of [this.canvas,this.overlay]){c.width=Math.round(r.width*this.dpr);c.height=Math.round(r.height*this.dpr);}this.dirty=true;}
   project(i){const p=this.model.nodes[i],x=p[1]*Math.cos(this.yaw)+p[3]*Math.sin(this.yaw),z=-p[1]*Math.sin(this.yaw)+p[3]*Math.cos(this.yaw),y=p[2]*Math.cos(this.pitch)-z*Math.sin(this.pitch);const s=Math.min(this.width*.46,this.height*.32)*this.zoom;return [this.width*.5+x*s+this.pan[0]*this.width*.5,this.height*.5+y*s-this.pan[1]*this.height*.5];}
   update(current=this.current, options={}){
