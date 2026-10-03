@@ -1,0 +1,9 @@
+downloads/
+.playwright-cli/
+tests/artifacts/
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+research/upstream/
+research/runs/
