@@ -1,36 +1,165 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>华容道 · 局面地图</title>
-  <meta name="description" content="在 25,955 个华容道局面之间漫游，探索解题路径与隐藏的结构。">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header><a class="brand" href="./"><span class="brand-icon">▥</span> 华容道 <span class="brand-sub">/ 局面地图</span></a><span class="edition">交互实验 <span>01</span></span></header>
-  <main>
-    <aside>
-      <div class="eyebrow">KLOTSKI / STATE SPACE</div>
-      <h1>每一步，<br>都是一个新世界。</h1>
-      <p class="intro">移动棋子，在所有可能的局面之间穿行。<br>把绿色方块移到下方出口，找到你的路。</p>
-      <div class="board-wrap"><div id="board" aria-label="华容道棋盘"></div><span class="exit">出 口 ↓</span></div>
-      <div class="board-help">拖动棋子 · 或选中后按方向键</div>
-      <div class="stats"><div><strong id="moves">0</strong><span>已走步数</span></div><div><strong id="distance">—</strong><span>距最近解 / 步</span></div><div><strong id="choices">—</strong><span>可选方向</span></div></div>
-      <div class="play-controls"><button id="play" class="primary" disabled>▶ 播放最短解</button><button id="step" disabled title="沿最短路径前进一步">单步 →</button></div>
-      <div class="secondary-controls"><button id="undo" disabled>↶ 撤回</button><button id="random" disabled>随机漫游</button><button id="reset" disabled>重置棋盘</button></div>
-      <label class="speed">播放速度 <input id="speed" type="range" min="1" max="8" value="3"><output id="speed-value">3 步/秒</output></label>
-      <p id="status" role="status" aria-live="polite">正在载入局面地图…</p>
-      <details class="about"><summary>这张图在讲什么？</summary><p>一个点是一种棋盘摆法，一条线是一次移动。密集区域里有很多走法，而细长通道连接不同的局部结构。</p><p>坐标由布局算法产生；图上距离近，不一定走得近。本演示的一步指棋子平移一格。</p><p>复用 2swap 的公开局面与布局数据；起点与常见标准开局相差 4 步。<a href="https://github.com/2swap/Klotski-Webpage" target="_blank" rel="noreferrer">数据与原项目 ↗</a> · <a href="https://www.youtube.com/watch?v=YGLNyHd2w10" target="_blank" rel="noreferrer">原视频 ↗</a></p></details>
-    </aside>
-    <section class="universe" aria-label="三维局面地图">
-      <canvas id="graph" aria-label="拖动旋转，滚轮缩放，点击节点切换局面" tabindex="0"></canvas><canvas id="overlay" aria-hidden="true"></canvas>
-      <div class="graph-heading"><div class="eyebrow">THE SPACE OF POSSIBILITY</div><h2>所有走法，在此相遇。</h2><span id="graph-count">25,955 个局面 · 一个连通世界</span></div>
-      <div class="graph-tools"><button id="home-view" title="恢复视角">⌖ 复位视角</button><button id="rotate" aria-pressed="false">↻ 自动旋转</button></div>
-      <div class="legend"><span><i class="dot current"></i>当前局面</span><span><i class="dot goal"></i>出口局面</span><span><i class="line"></i>最短路径</span></div>
-      <div class="layout-control"><label>布局对照 <select id="layout" disabled><option value="original">作者布局</option><option value="rebuilt">重新生成 · 种子 7</option></select></label><span id="layout-note">作者公开的预计算坐标</span></div>
-      <div id="loading" class="loading"><span></span>正在展开 25,955 个可能…</div>
-      <div class="graph-bottom"><div class="view-options"><label>观察方式<select id="color"><option value="structure">空间结构</option><option value="distance">距离解有多远</option><option value="relation">大方块与横条</option></select></label><label class="check"><input id="show-path" type="checkbox" checked>最短路径</label><label class="check"><input id="show-solutions" type="checkbox" checked>所有解</label><label class="check"><input id="local" type="checkbox">局部邻域</label></div><div id="color-legend">连线表示一次合法移动 · 空间位置由布局决定</div><div class="graph-help"><span>拖动旋转 · 滚轮缩放 · Shift 拖动平移 · 点击节点跳转</span><span id="node-id">STATE —</span></div></div>
-    </section>
-  </main>
-  <script type="module" src="app.js"></script>
-</body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#101526" />
+    <title>华容道 · 局面地图</title>
+    <meta
+      name="description"
+      content="移动一块棋子，走过图中的一条边。在同一连通分量的 25,955 个华容道局面中探索最短路径与隐藏的结构。"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-panel="board">
+    <header>
+      <a class="brand" href="./"
+        ><span class="brand-icon" aria-hidden="true">▥</span> 华容道
+        <span class="brand-sub">/ 局面地图</span></a
+      >
+    </header>
+    <nav class="mobile-switch" aria-label="视图切换">
+      <button data-panel-target="board" aria-pressed="true" aria-controls="board-panel">
+        棋盘与求解
+      </button>
+      <button data-panel-target="map" aria-pressed="false" aria-controls="map-panel">
+        局面地图
+      </button>
+      <span id="mobile-distance">正在加载…</span>
+    </nav>
+    <main>
+      <aside id="board-panel" aria-label="棋盘与求解">
+        <div class="board-heading">
+          <h1>棋盘</h1>
+          <p class="intro">将绿色目标块移到下方出口。</p>
+        </div>
+        <div class="board-area">
+          <div class="board-wrap">
+            <div id="board" aria-label="华容道棋盘"></div>
+            <span class="exit">出 口 ↓</span>
+          </div>
+          <div class="board-help">拖动棋子 · 或选中后按方向键</div>
+        </div>
+        <div class="stats">
+          <div><strong id="moves">0</strong><span>已走步数</span></div>
+          <div><strong id="distance">—</strong><span>距最近解 / 步</span></div>
+          <div><strong id="choices">—</strong><span>合法走法</span></div>
+        </div>
+        <div class="play-controls">
+          <button id="play" class="primary" disabled>▶ 播放最短解</button
+          ><button id="step" disabled title="沿最短路径前进一步">单步 →</button>
+        </div>
+        <div class="secondary-controls">
+          <button id="undo" disabled>↶ 撤回</button><button id="random" disabled>随机漫游</button
+          ><button id="reset" disabled>重置棋盘</button>
+        </div>
+        <label class="speed"
+          >播放速度 <input id="speed" type="range" min="1" max="8" value="3" /><output
+            id="speed-value"
+            >3 步/秒</output
+          ></label
+        >
+        <p id="status" role="status" aria-live="polite">正在载入局面地图…</p>
+        <details class="about">
+          <summary>读懂这张地图</summary>
+          <p>
+            <b>一个点，一种摆法。</b
+            >同形棋子互换名字仍视为同一局面。一条边表示棋子沿一个方向平移一格。
+          </p>
+          <p>
+            <b>先单步，再探索。</b
+            >观察橙色标记随棋盘移动；打开「八步邻域」查看八步内能到达哪里，切换「距解步数」观察求解距离。
+          </p>
+          <p>
+            图中是当前棋子配置的一个连通分量，包含 25,955
+            个局面，并非全部华容道关卡。图上靠得近，不代表实际步数少。
+          </p>
+          <p>
+            复用 2swap 的公开局面与原始布局数据；起点与常见标准开局相差 4 步。<a
+              href="https://github.com/2swap/Klotski-Webpage"
+              target="_blank"
+              rel="noreferrer"
+              >原项目 ↗</a
+            >
+            ·
+            <a href="https://www.youtube.com/watch?v=YGLNyHd2w10" target="_blank" rel="noreferrer"
+              >原视频 ↗</a
+            >
+          </p>
+        </details>
+      </aside>
+      <section id="map-panel" class="universe" aria-label="三维局面地图">
+        <div class="graph-topbar">
+          <div class="graph-heading">
+            <h2>局面地图</h2>
+          </div>
+          <div class="legend">
+            <span><i class="dot current"></i>当前局面</span>
+            <span><i class="dot goal"></i>出口局面</span>
+            <span><i class="line"></i>最短路径</span>
+          </div>
+          <div class="graph-tools">
+            <button id="home-view" title="恢复视角">⌖ 复位</button>
+            <button id="rotate" aria-pressed="false">↻ 自动旋转</button>
+          </div>
+        </div>
+        <div class="graph-stage">
+          <canvas
+            id="graph"
+            aria-label="拖动旋转，滚轮缩放，点击节点切换局面；方向键旋转，加减号缩放，0 恢复视角"
+            tabindex="0"
+          ></canvas>
+          <canvas id="overlay" aria-hidden="true"></canvas>
+        </div>
+        <div id="loading" class="loading"><span></span>正在加载地图…</div>
+        <div class="graph-bottom">
+          <div class="graph-controls">
+            <label class="color-control"
+              >着色
+              <select id="color">
+                <option value="structure">空间结构</option>
+                <option value="distance">距解步数</option>
+                <option value="relation">大方块与横条</option>
+              </select>
+            </label>
+            <div class="view-options">
+              <label class="check"><input id="show-path" type="checkbox" checked />最短路径</label>
+              <label class="check"
+                ><input id="show-solutions" type="checkbox" checked />所有解</label
+              >
+              <label class="check"><input id="local" type="checkbox" />八步邻域</label>
+            </div>
+            <label class="layout-control"
+              >布局
+              <select id="layout" disabled title="作者公开的预计算坐标">
+                <option value="original">作者布局</option>
+                <option value="rebuilt">重新生成 · 种子 7</option>
+              </select>
+            </label>
+          </div>
+          <div class="graph-footer">
+            <div class="graph-hints">
+              <span>拖动旋转 · 滚轮缩放 · 点击节点跳转</span>
+              <div id="color-legend" aria-live="polite"></div>
+            </div>
+            <div class="graph-meta">
+              <details class="graph-help">
+                <summary>操作说明</summary>
+                <div class="help-popover">
+                  <p>拖动旋转 · 滚轮缩放<br />Shift 拖动平移 · 点击节点跳转</p>
+                  <p>聚焦地图后：方向键旋转，+ / − 缩放，0 复位。</p>
+                  <p><span id="node-id">STATE —</span></p>
+                  <p id="layout-note">作者公开的预计算坐标</p>
+                  <p>连线是一次合法移动；图中距离不等于实际步数。</p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <noscript>此交互演示需要启用 JavaScript。</noscript>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,352 @@
+[
+  {
+    "profile": "previous-baseline",
+    "procrustesNrmse": 0.6310405757391856,
+    "edgeLengthCorrelation": 0.862839221469512,
+    "pairDistanceCorrelation": 0.7771579463012716
+  },
+  {
+    "profile": "release-seed1",
+    "arguments": [
+      "--seed",
+      "1"
+    ],
+    "metadata": {
+      "algorithm": "2swap historical force laws, refreshed uniform bins, double-buffered updates",
+      "forceLaw": "release-2025",
+      "speedLimit": 20.0,
+      "upstreamCommit": "2c7d90dda292ea12245ed90115eb20002fbc3c26",
+      "seed": 1,
+      "nodeCount": 25955,
+      "initialization": "BFS parent + seeded random displacement; no input coordinates",
+      "growthStepsPerBatch": 80,
+      "settleSteps": 12000,
+      "flatSteps": 1000,
+      "repel": 1.0,
+      "attract": 1.0,
+      "decay": 0.65,
+      "mirrorForce": 0.003,
+      "dimensions": [
+        3.98,
+        3.95,
+        3
+      ],
+      "gridSize": 10,
+      "seconds": 47.77,
+      "edgeLengthMedian": 0.005555923925845609,
+      "edgeLengthP95": 0.02244199914772553,
+      "mirrorRmsRaw": 0.33479437232017517,
+      "sourceGraphSha256": "8f0131d4ce8565b3c059f2b088587e22f6eda76ef6c220c0f55d70af3318c38a",
+      "checkpoints": [
+        {
+          "stage": "grown",
+          "nodes": 25955,
+          "seconds": 4.06
+        },
+        {
+          "stage": "settled-4d",
+          "nodes": 25955,
+          "seconds": 44.17
+        },
+        {
+          "stage": "final-3d",
+          "nodes": 25955,
+          "seconds": 47.68
+        }
+      ]
+    },
+    "procrustesNrmse": 0.8933445521610239,
+    "edgeLengthCorrelation": 0.8565997274873602,
+    "pairDistanceCorrelation": 0.6655387236762164
+  },
+  {
+    "profile": "release-3d",
+    "arguments": [
+      "--growth-dimension",
+      "3",
+      "--settle-dimension",
+      "3"
+    ],
+    "metadata": {
+      "algorithm": "2swap historical force laws, refreshed uniform bins, double-buffered updates",
+      "forceLaw": "release-2025",
+      "speedLimit": 20.0,
+      "upstreamCommit": "2c7d90dda292ea12245ed90115eb20002fbc3c26",
+      "seed": 7,
+      "nodeCount": 25955,
+      "initialization": "BFS parent + seeded random displacement; no input coordinates",
+      "growthStepsPerBatch": 80,
+      "settleSteps": 12000,
+      "flatSteps": 1000,
+      "repel": 1.0,
+      "attract": 1.0,
+      "decay": 0.65,
+      "mirrorForce": 0.003,
+      "dimensions": [
+        3.0,
+        3.0,
+        3
+      ],
+      "gridSize": 10,
+      "seconds": 54.6,
+      "edgeLengthMedian": 0.004719840217481485,
+      "edgeLengthP95": 0.019637145693342104,
+      "mirrorRmsRaw": 0.45529910922050476,
+      "sourceGraphSha256": "8f0131d4ce8565b3c059f2b088587e22f6eda76ef6c220c0f55d70af3318c38a",
+      "checkpoints": [
+        {
+          "stage": "grown",
+          "nodes": 25955,
+          "seconds": 4.58
+        },
+        {
+          "stage": "settled-4d",
+          "nodes": 25955,
+          "seconds": 50.56
+        },
+        {
+          "stage": "final-3d",
+          "nodes": 25955,
+          "seconds": 54.51
+        }
+      ]
+    },
+    "procrustesNrmse": 0.7766360239224098,
+    "edgeLengthCorrelation": 0.835958500838582,
+    "pairDistanceCorrelation": 0.6787443862668806
+  },
+  {
+    "profile": "release-long",
+    "arguments": [
+      "--settle-steps",
+      "60000",
+      "--flat-steps",
+      "5000"
+    ],
+    "metadata": {
+      "algorithm": "2swap historical force laws, refreshed uniform bins, double-buffered updates",
+      "forceLaw": "release-2025",
+      "speedLimit": 20.0,
+      "upstreamCommit": "2c7d90dda292ea12245ed90115eb20002fbc3c26",
+      "seed": 7,
+      "nodeCount": 25955,
+      "initialization": "BFS parent + seeded random displacement; no input coordinates",
+      "growthStepsPerBatch": 80,
+      "settleSteps": 60000,
+      "flatSteps": 5000,
+      "repel": 1.0,
+      "attract": 1.0,
+      "decay": 0.65,
+      "mirrorForce": 0.003,
+      "dimensions": [
+        3.98,
+        3.95,
+        3
+      ],
+      "gridSize": 10,
+      "seconds": 244.57,
+      "edgeLengthMedian": 0.004298483989103813,
+      "edgeLengthP95": 0.017226023545993643,
+      "mirrorRmsRaw": 0.3417809307575226,
+      "sourceGraphSha256": "8f0131d4ce8565b3c059f2b088587e22f6eda76ef6c220c0f55d70af3318c38a",
+      "checkpoints": [
+        {
+          "stage": "grown",
+          "nodes": 25955,
+          "seconds": 4.6
+        },
+        {
+          "stage": "settled-4d",
+          "nodes": 25955,
+          "seconds": 224.13
+        },
+        {
+          "stage": "final-3d",
+          "nodes": 25955,
+          "seconds": 244.47
+        }
+      ]
+    },
+    "procrustesNrmse": 0.4695491076831661,
+    "edgeLengthCorrelation": 0.8961973579104022,
+    "pairDistanceCorrelation": 0.8695786335306132
+  },
+  {
+    "profile": "release-decay92",
+    "arguments": [
+      "--decay",
+      ".92"
+    ],
+    "metadata": {
+      "algorithm": "2swap historical force laws, refreshed uniform bins, double-buffered updates",
+      "forceLaw": "release-2025",
+      "speedLimit": 20.0,
+      "upstreamCommit": "2c7d90dda292ea12245ed90115eb20002fbc3c26",
+      "seed": 7,
+      "nodeCount": 25955,
+      "initialization": "BFS parent + seeded random displacement; no input coordinates",
+      "growthStepsPerBatch": 80,
+      "settleSteps": 12000,
+      "flatSteps": 1000,
+      "repel": 1.0,
+      "attract": 1.0,
+      "decay": 0.92,
+      "mirrorForce": 0.003,
+      "dimensions": [
+        3.98,
+        3.95,
+        3
+      ],
+      "gridSize": 10,
+      "seconds": 51.9,
+      "edgeLengthMedian": 0.0037470434534684176,
+      "edgeLengthP95": 0.015104246490146928,
+      "mirrorRmsRaw": 0.4595135748386383,
+      "sourceGraphSha256": "8f0131d4ce8565b3c059f2b088587e22f6eda76ef6c220c0f55d70af3318c38a",
+      "checkpoints": [
+        {
+          "stage": "grown",
+          "nodes": 25955,
+          "seconds": 5.01
+        },
+        {
+          "stage": "settled-4d",
+          "nodes": 25955,
+          "seconds": 48.32
+        },
+        {
+          "stage": "final-3d",
+          "nodes": 25955,
+          "seconds": 51.8
+        }
+      ]
+    },
+    "procrustesNrmse": 0.6106452385603518,
+    "edgeLengthCorrelation": 0.906228997820207,
+    "pairDistanceCorrelation": 0.8394754262886743
+  },
+  {
+    "profile": "cpu-sqrty",
+    "arguments": [
+      "--force-law",
+      "cpu-2024-sqrty",
+      "--decay",
+      ".9",
+      "--speed-limit",
+      "3",
+      "--growth-dimension",
+      "3",
+      "--settle-dimension",
+      "3"
+    ],
+    "metadata": {
+      "algorithm": "2swap historical force laws, refreshed uniform bins, double-buffered updates",
+      "forceLaw": "cpu-2024-sqrty",
+      "speedLimit": 3.0,
+      "upstreamCommit": "13842105e1c2a97b0e168d55601e4f5807cde0e2",
+      "seed": 7,
+      "nodeCount": 25955,
+      "initialization": "BFS parent + seeded random displacement; no input coordinates",
+      "growthStepsPerBatch": 80,
+      "settleSteps": 12000,
+      "flatSteps": 1000,
+      "repel": 1.0,
+      "attract": 1.0,
+      "decay": 0.9,
+      "mirrorForce": 0.003,
+      "dimensions": [
+        3.0,
+        3.0,
+        3
+      ],
+      "gridSize": 10,
+      "seconds": 56.57,
+      "edgeLengthMedian": 0.0009449398695165857,
+      "edgeLengthP95": 0.008955730638046788,
+      "mirrorRmsRaw": 0.7276574969291687,
+      "sourceGraphSha256": "8f0131d4ce8565b3c059f2b088587e22f6eda76ef6c220c0f55d70af3318c38a",
+      "checkpoints": [
+        {
+          "stage": "grown",
+          "nodes": 25955,
+          "seconds": 4.3
+        },
+        {
+          "stage": "settled-4d",
+          "nodes": 25955,
+          "seconds": 52.45
+        },
+        {
+          "stage": "final-3d",
+          "nodes": 25955,
+          "seconds": 56.47
+        }
+      ]
+    },
+    "procrustesNrmse": 0.551289159470064,
+    "edgeLengthCorrelation": 0.8820550666535265,
+    "pairDistanceCorrelation": 0.7979767866993432
+  },
+  {
+    "profile": "cpu-quartic",
+    "arguments": [
+      "--force-law",
+      "cpu-2024-quartic",
+      "--decay",
+      ".9",
+      "--speed-limit",
+      "3",
+      "--growth-dimension",
+      "3",
+      "--settle-dimension",
+      "3"
+    ],
+    "metadata": {
+      "algorithm": "2swap historical force laws, refreshed uniform bins, double-buffered updates",
+      "forceLaw": "cpu-2024-quartic",
+      "speedLimit": 3.0,
+      "upstreamCommit": "13842105e1c2a97b0e168d55601e4f5807cde0e2",
+      "seed": 7,
+      "nodeCount": 25955,
+      "initialization": "BFS parent + seeded random displacement; no input coordinates",
+      "growthStepsPerBatch": 80,
+      "settleSteps": 12000,
+      "flatSteps": 1000,
+      "repel": 1.0,
+      "attract": 1.0,
+      "decay": 0.9,
+      "mirrorForce": 0.003,
+      "dimensions": [
+        3.0,
+        3.0,
+        3
+      ],
+      "gridSize": 10,
+      "seconds": 67.54,
+      "edgeLengthMedian": 0.14708856930378805,
+      "edgeLengthP95": 0.1888030256398082,
+      "mirrorRmsRaw": 1.525807499885559,
+      "sourceGraphSha256": "8f0131d4ce8565b3c059f2b088587e22f6eda76ef6c220c0f55d70af3318c38a",
+      "checkpoints": [
+        {
+          "stage": "grown",
+          "nodes": 25955,
+          "seconds": 5.9
+        },
+        {
+          "stage": "settled-4d",
+          "nodes": 25955,
+          "seconds": 62.55
+        },
+        {
+          "stage": "final-3d",
+          "nodes": 25955,
+          "seconds": 67.44
+        }
+      ]
+    },
+    "procrustesNrmse": 0.9332905051360704,
+    "edgeLengthCorrelation": 0.011016488687647957,
+    "pairDistanceCorrelation": 0.3615704454620038
+  }
+]

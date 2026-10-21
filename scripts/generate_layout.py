@@ -1,4 +1,4 @@
-"""Regenerate positions from topology only, using the author's release force laws.
+"""Regenerate positions from topology only, using selectable historical force laws.
 
 Requires Python + NumPy, NVIDIA GPU and nvcc. No original XYZ is read for initialization.
 """
@@ -15,6 +15,8 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 RELEASE = '2c7d90dda292ea12245ed90115eb20002fbc3c26'
+CPU_RELEASE = '13842105e1c2a97b0e168d55601e4f5807cde0e2'
+FORCE_LAWS = ['release-2025', 'cpu-2024-sqrty', 'cpu-2024-quartic']
 
 
 def canonical(board):
@@ -65,19 +67,19 @@ def load_kernel():
         finally:
             temporary.unlink(missing_ok=True)
     lib = ctypes.CDLL(str(library))
-    func = lib.run_layout
+    func = lib.run_layout_model
     pointer = ctypes.c_void_p
-    func.argtypes = [pointer]*4 + [ctypes.c_int]*3 + [ctypes.c_float]*5 + [ctypes.c_int, ctypes.c_char_p]
+    func.argtypes = [pointer]*4 + [ctypes.c_int]*3 + [ctypes.c_float]*5 + [ctypes.c_int, ctypes.c_char_p, ctypes.c_int, ctypes.c_float]
     func.restype = ctypes.c_int
     return func
 
 
-def simulate(func, positions, velocities, adjacency, mirrors, steps, dimension=3.98, decay=.65, mirror=.003, exact=None):
+def simulate(func, positions, velocities, adjacency, mirrors, steps, dimension=3.98, decay=.65, mirror=.003, exact=None, repel=1., attract=1., law=0, speed_limit=20.):
     n = len(positions)
     error = ctypes.create_string_buffer(1024)
     arrays = [positions, velocities, adjacency, mirrors]
     assert all(a.flags.c_contiguous for a in arrays)
-    result = func(*(a.ctypes.data for a in arrays), n, adjacency.shape[1], steps, 1., 1., decay, dimension, mirror, int(n < 5000 if exact is None else exact), error)
+    result = func(*(a.ctypes.data for a in arrays), n, adjacency.shape[1], steps, repel, attract, decay, dimension, mirror, int(n < 5000 if exact is None else exact), error, law, speed_limit)
     if result:
         raise RuntimeError(error.value.decode())
     if not np.isfinite(positions).all() or not np.isfinite(velocities).all():
@@ -97,10 +99,22 @@ def main():
     ap.add_argument('--settle-steps', type=int, default=12000)
     ap.add_argument('--flat-steps', type=int, default=1000)
     ap.add_argument('--mirror-force', type=float, default=.003)
+    ap.add_argument('--repel', type=float, default=1.)
+    ap.add_argument('--attract', type=float, default=1.)
+    ap.add_argument('--decay', type=float, default=.65)
+    ap.add_argument('--growth-dimension', type=float, default=3.98)
+    ap.add_argument('--settle-dimension', type=float, default=3.95)
+    ap.add_argument('--speed-limit', type=float, default=20.)
+    ap.add_argument('--force-law', choices=FORCE_LAWS, default=FORCE_LAWS[0])
     ap.add_argument('--output', default='public/layout-rebuilt.json')
     args = ap.parse_args()
     if args.growth_steps < 1 or args.settle_steps < 0 or args.flat_steps < 0 or args.mirror_force < 0:
         ap.error('增长迭代需为正数，其余迭代数及镜像系数不能为负数')
+    numeric = [args.repel,args.attract,args.decay,args.growth_dimension,args.settle_dimension,args.speed_limit,args.mirror_force]
+    if not np.isfinite(numeric).all() or args.repel < 0 or args.attract <= 0 or not 0 < args.decay < 1 or args.speed_limit <= 0:
+        ap.error('参数必须有限；排斥非负，吸引及限速为正，阻尼须在 0 与 1 之间')
+    if not 2 <= args.growth_dimension <= 4 or not 2 <= args.settle_dimension <= 4:
+        ap.error('维数须在 2 与 4 之间')
     data = json.loads((ROOT / 'public/graph.json').read_text())
     order, parent, adjacency, mirrors = build_topology(data)
     n = len(order)
@@ -110,6 +124,8 @@ def main():
     positions[0] = rng.uniform(-1, 1, 4)
     velocities[0] = rng.uniform(-1, 1, 4)
     func = load_kernel()
+    physics = dict(mirror=args.mirror_force,repel=args.repel,attract=args.attract,
+                   decay=args.decay,law=FORCE_LAWS.index(args.force_law),speed_limit=args.speed_limit)
     begin = time.perf_counter()
     run_directory = ROOT / 'research/runs' / Path(args.output).stem
     run_directory.mkdir(parents=True, exist_ok=True)
@@ -124,18 +140,18 @@ def main():
         for i in range(previous, count):
             positions[i] = positions[parent[i]] + rng.uniform(-1, 1, 4)
             velocities[i] = velocities[parent[i]]
-        simulate(func, positions[:count], velocities[:count], adjacency[:count], mirrors[:count], args.growth_steps, mirror=args.mirror_force)
+        simulate(func, positions[:count], velocities[:count], adjacency[:count], mirrors[:count], args.growth_steps, dimension=args.growth_dimension, **physics)
         # Translation-invariant centering keeps the mirror plane at x=0.
         positions[:count] -= positions[:count].mean(axis=0)
         previous = count
         print(f'grow {count}/{n}', flush=True)
     snapshot('grown', n)
     for block in range(0, args.settle_steps, 250):
-        simulate(func, positions, velocities, adjacency, mirrors, min(250,args.settle_steps-block), dimension=3.95, mirror=args.mirror_force)
+        simulate(func, positions, velocities, adjacency, mirrors, min(250,args.settle_steps-block), dimension=args.settle_dimension, **physics)
         positions -= positions.mean(axis=0)
         print(f'settle {min(block+250,args.settle_steps)}/{args.settle_steps}', flush=True)
     snapshot('settled-4d', n)
-    simulate(func, positions, velocities, adjacency, mirrors, args.flat_steps, dimension=3., mirror=args.mirror_force)
+    simulate(func, positions, velocities, adjacency, mirrors, args.flat_steps, dimension=3., **physics)
     snapshot('final-3d', n)
     coords = normalize(positions)[np.argsort(order)]
     lengths = []
@@ -147,11 +163,12 @@ def main():
     mirror_diff[:,0] *= -1
     mirror_error = float(np.sqrt(np.mean((positions[:,:3]-mirror_diff[:,:3])**2)))
     metadata = {
-        'algorithm':'2swap release force laws, refreshed uniform bins, double-buffered updates',
-        'upstreamCommit':RELEASE, 'seed':args.seed, 'nodeCount':n,
+        'algorithm':'2swap historical force laws, refreshed uniform bins, double-buffered updates',
+        'forceLaw':args.force_law,'speedLimit':args.speed_limit,
+        'upstreamCommit':RELEASE if args.force_law==FORCE_LAWS[0] else CPU_RELEASE, 'seed':args.seed, 'nodeCount':n,
         'initialization':'BFS parent + seeded random displacement; no input coordinates',
         'growthStepsPerBatch':args.growth_steps,'settleSteps':args.settle_steps,'flatSteps':args.flat_steps,
-        'repel':1,'attract':1,'decay':.65,'mirrorForce':args.mirror_force,'dimensions':[3.98,3.95,3],
+        'repel':args.repel,'attract':args.attract,'decay':args.decay,'mirrorForce':args.mirror_force,'dimensions':[args.growth_dimension,args.settle_dimension,3],
         'gridSize':10,'seconds':round(time.perf_counter()-begin,2),
         'edgeLengthMedian':float(np.median(lengths)), 'edgeLengthP95':float(np.percentile(lengths,95)),
         'mirrorRmsRaw':mirror_error, 'sourceGraphSha256':hashlib.sha256((ROOT/'public/graph.json').read_bytes()).hexdigest(),

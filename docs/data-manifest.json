@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "graph": {
+    "nodes": 25955,
+    "undirectedEdges": 41948,
+    "initial": "abbcabbc.dd.efgheijh",
+    "source": {
+      "repository": "https://github.com/2swap/Klotski-Webpage",
+      "commit": "069d99b393eb06c37402598393806d84a41813ae",
+      "file": "data.json",
+      "sha256": "25755b9b0196e0a40632299058cc07431dacdea089ce2aa42941f907c6be7091"
+    },
+    "conversion": "Deduplicate adjacency; center and uniformly scale XYZ; preserve board strings and node order."
+  },
+  "files": {
+    "public/graph.json": {
+      "sha256": "8f0131d4ce8565b3c059f2b088587e22f6eda76ef6c220c0f55d70af3318c38a",
+      "bytes": 2066431
+    },
+    "public/layout-rebuilt.json": {
+      "sha256": "8d9bc5463a5afe63e0106e022b3cd8551ae615331cf0b0586f31d4879deedeaf",
+      "bytes": 784881
+    },
+    "public/layout-candidate.json": {
+      "sha256": "1aa281d2a34a60d021fca09d17a1679c02456ba6ecc2df289ab0f29ff7c848dc",
+      "bytes": 784489
+    }
+  }
+}

@@ -1,0 +1,5 @@
+public/*.json
+research/
+downloads/
+node_modules/
+LICENSE

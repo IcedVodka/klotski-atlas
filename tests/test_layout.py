@@ -1,13 +1,11 @@
 """CPU reference checks for the release force laws and the CUDA port."""
-import copy
-import json
 from pathlib import Path
 import sys
 import unittest
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from generate_layout import ROOT, build_topology, load_kernel, simulate
+from generate_layout import load_kernel, simulate
 
 
 def reference_step(p, v, adj, mirrors, dimension, mirror, binned=False):
@@ -69,21 +67,6 @@ class LayoutTest(unittest.TestCase):
                 simulate(self.func,p,v,adj,mirrors,1,dimension=3.95,exact=not binned)
                 np.testing.assert_allclose(p,expected,rtol=3e-5,atol=3e-6)
                 np.testing.assert_allclose(v,ev,rtol=3e-5,atol=3e-6)
-
-    def test_topology_does_not_depend_on_original_coordinates(self):
-        data=json.loads((ROOT/'public/graph.json').read_text())
-        first=build_topology(data)
-        poisoned=copy.deepcopy(data)
-        for n in poisoned['nodes']:
-            n[1:4]=[None, None, None]
-        second=build_topology(poisoned)
-        for a,b in zip(first,second):
-            np.testing.assert_array_equal(a,b)
-        order,parent,adj,mirrors=first
-        self.assertEqual(len(order),25955)
-        self.assertTrue(np.all(mirrors>=0))
-        np.testing.assert_array_equal(mirrors[mirrors],np.arange(len(order)))
-        self.assertTrue(all(p<i for i,p in enumerate(parent)))
 
     def test_projection_and_coincident_points_remain_finite(self):
         p=np.zeros((2,4),np.float32);v=np.zeros_like(p)

@@ -1,0 +1,1024 @@
+{
+  "dataUrl": "https://raw.githubusercontent.com/2swap/Klotski-Webpage/069d99b393eb06c37402598393806d84a41813ae/data.json",
+  "rawSha256": "25755b9b0196e0a40632299058cc07431dacdea089ce2aa42941f907c6be7091",
+  "nodeCount": 25955,
+  "sampleSeed": 20261012,
+  "trainingNodes": 1024,
+  "heldOutNodes": 1024,
+  "hypothesis": "3D stationary force balance, w=0; no gravity or hard projection",
+  "residualDefinition": "norm(ratio*repulsion + attraction) / norm(attraction)",
+  "warning": "Best fit is conditional evidence, not the original generation parameters. Damping, seed, time schedule and hidden w are unidentifiable here.",
+  "positiveControl": {
+    "path": "research/runs/release-seed1/final-3d.npz",
+    "sha256": "aa9c1d680c153bfc25fe77a3e66c4881f65f36cb3b764351c6a1d7f6ea9cd383",
+    "law": "release-2025",
+    "scale": 1.0,
+    "repelAttractRatio": 0.9926417940698734,
+    "trainResidual": 0.06534169562854353,
+    "testResidual": 0.06932439370458708
+  },
+  "results": [
+    {
+      "law": "release-2025",
+      "duplicateNeighbors": false,
+      "scale": 1.4805446016942059,
+      "repelAttractRatio": 31.35748525646832,
+      "trainResidual": 0.9996418700991023,
+      "testResidual": 0.9997464469712021,
+      "atRawScale": {
+        "scale": 1.0,
+        "repelAttractRatio": 10.260014643925683,
+        "trainResidual": 0.9996981410046868,
+        "testResidual": 0.9998109699939662
+      },
+      "coarseGrid": [
+        {
+          "scale": 1e-05,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 1.778279410038923e-05,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 3.1622776601683795e-05,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 5.623413251903491e-05,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0001,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.00017782794100389227,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.00031622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0005623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.001,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0017782794100389228,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0031622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.005623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.01,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.01778279410038923,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.03162277660168379,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.05623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.1,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.1778279410038923,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.31622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.5623413251903491,
+          "repelAttractRatio": 0.4982266384555488,
+          "trainResidual": 0.9999877068706304,
+          "testResidual": 1.0000249326326653
+        },
+        {
+          "scale": 1.0,
+          "repelAttractRatio": 10.260014643925683,
+          "trainResidual": 0.9996981410046868,
+          "testResidual": 0.9998109699939662
+        },
+        {
+          "scale": 1.7782794100389228,
+          "repelAttractRatio": 50.994373725014064,
+          "trainResidual": 0.9996475241500475,
+          "testResidual": 0.9997431981332164
+        },
+        {
+          "scale": 3.1622776601683795,
+          "repelAttractRatio": 236.3230600287412,
+          "trainResidual": 0.9996877143414924,
+          "testResidual": 0.999749300959373
+        },
+        {
+          "scale": 5.623413251903491,
+          "repelAttractRatio": 1181.6852536228614,
+          "trainResidual": 0.9997146262900498,
+          "testResidual": 0.9997544158049598
+        },
+        {
+          "scale": 10.0,
+          "repelAttractRatio": 6324.768263521251,
+          "trainResidual": 0.999725681096697,
+          "testResidual": 0.9997568940047854
+        }
+      ],
+      "scaleSearchBoundary": false
+    },
+    {
+      "law": "cpu-2024-sqrty",
+      "duplicateNeighbors": false,
+      "scale": 9.924556205971536,
+      "repelAttractRatio": 146.48123153694314,
+      "trainResidual": 0.9980242268197556,
+      "testResidual": 0.9973353545640994,
+      "atRawScale": {
+        "scale": 1.0,
+        "repelAttractRatio": 1.4718298670927412,
+        "trainResidual": 0.9980671718852998,
+        "testResidual": 0.9973929435063545
+      },
+      "coarseGrid": [
+        {
+          "scale": 1e-05,
+          "repelAttractRatio": 3.4587010272192873e-14,
+          "trainResidual": 0.999842486722988,
+          "testResidual": 0.9991944790079181
+        },
+        {
+          "scale": 1.778279410038923e-05,
+          "repelAttractRatio": 1.4465193354144433e-13,
+          "trainResidual": 0.9998409691512198,
+          "testResidual": 0.9991620997748814
+        },
+        {
+          "scale": 3.1622776601683795e-05,
+          "repelAttractRatio": 7.393278169175567e-13,
+          "trainResidual": 0.9998555994702272,
+          "testResidual": 0.9991346342878532
+        },
+        {
+          "scale": 5.623413251903491e-05,
+          "repelAttractRatio": 4.200953030913195e-12,
+          "trainResidual": 0.9998996558841189,
+          "testResidual": 0.9991926679026258
+        },
+        {
+          "scale": 0.0001,
+          "repelAttractRatio": 2.3212217359443923e-11,
+          "trainResidual": 0.9999505644196036,
+          "testResidual": 0.999381070000886
+        },
+        {
+          "scale": 0.00017782794100389227,
+          "repelAttractRatio": 1.1780240381511494e-10,
+          "trainResidual": 0.9999823887120808,
+          "testResidual": 0.9996173776934594
+        },
+        {
+          "scale": 0.00031622776601683794,
+          "repelAttractRatio": 5.117782256320317e-10,
+          "trainResidual": 0.9999956925725147,
+          "testResidual": 0.9998135093816273
+        },
+        {
+          "scale": 0.0005623413251903491,
+          "repelAttractRatio": 1.7305176739383354e-09,
+          "trainResidual": 0.9999993079541493,
+          "testResidual": 0.9999300194983908
+        },
+        {
+          "scale": 0.001,
+          "repelAttractRatio": 1.0780932343991456e-08,
+          "trainResidual": 0.9999994768120943,
+          "testResidual": 0.9999471657503078
+        },
+        {
+          "scale": 0.0017782794100389228,
+          "repelAttractRatio": 1.5970004103117256e-07,
+          "trainResidual": 0.999996063908776,
+          "testResidual": 0.9998843977948462
+        },
+        {
+          "scale": 0.0031622776601683794,
+          "repelAttractRatio": 1.4290236563287348e-06,
+          "trainResidual": 0.9999814848805633,
+          "testResidual": 0.9998042162386511
+        },
+        {
+          "scale": 0.005623413251903491,
+          "repelAttractRatio": 8.785695247930097e-06,
+          "trainResidual": 0.9999436116854419,
+          "testResidual": 0.999717132525126
+        },
+        {
+          "scale": 0.01,
+          "repelAttractRatio": 4.628695891423383e-05,
+          "trainResidual": 0.999850062527926,
+          "testResidual": 0.9995691497790719
+        },
+        {
+          "scale": 0.01778279410038923,
+          "repelAttractRatio": 0.00021927107122885977,
+          "trainResidual": 0.9996458148567491,
+          "testResidual": 0.9993136104825611
+        },
+        {
+          "scale": 0.03162277660168379,
+          "repelAttractRatio": 0.0009267779313463081,
+          "trainResidual": 0.9993200545437901,
+          "testResidual": 0.9989844962819164
+        },
+        {
+          "scale": 0.05623413251903491,
+          "repelAttractRatio": 0.0034859535038533006,
+          "trainResidual": 0.9989853082655826,
+          "testResidual": 0.9986035625653591
+        },
+        {
+          "scale": 0.1,
+          "repelAttractRatio": 0.012226531818080186,
+          "trainResidual": 0.998711993257395,
+          "testResidual": 0.9982169777883779
+        },
+        {
+          "scale": 0.1778279410038923,
+          "repelAttractRatio": 0.041744107398430305,
+          "trainResidual": 0.9984714372365329,
+          "testResidual": 0.9978958058078566
+        },
+        {
+          "scale": 0.31622776601683794,
+          "repelAttractRatio": 0.13968881772663772,
+          "trainResidual": 0.9982711116038538,
+          "testResidual": 0.9976510042404036
+        },
+        {
+          "scale": 0.5623413251903491,
+          "repelAttractRatio": 0.45744496547387936,
+          "trainResidual": 0.998136855918603,
+          "testResidual": 0.9974835435289681
+        },
+        {
+          "scale": 1.0,
+          "repelAttractRatio": 1.4718298670927412,
+          "trainResidual": 0.9980671718852998,
+          "testResidual": 0.9973929435063545
+        },
+        {
+          "scale": 1.7782794100389228,
+          "repelAttractRatio": 4.686657309601867,
+          "trainResidual": 0.9980386216432267,
+          "testResidual": 0.9973548316947549
+        },
+        {
+          "scale": 3.1622776601683795,
+          "repelAttractRatio": 14.856247637194238,
+          "trainResidual": 0.9980285751324496,
+          "testResidual": 0.9973412579562748
+        },
+        {
+          "scale": 5.623413251903491,
+          "repelAttractRatio": 47.016597212191506,
+          "trainResidual": 0.99802527576112,
+          "testResidual": 0.9973367802497699
+        },
+        {
+          "scale": 10.0,
+          "repelAttractRatio": 148.7169826534406,
+          "trainResidual": 0.9980242193411497,
+          "testResidual": 0.9973353443957167
+        }
+      ],
+      "scaleSearchBoundary": true
+    },
+    {
+      "law": "cpu-2024-quartic",
+      "duplicateNeighbors": false,
+      "scale": 1.0061871285512592e-05,
+      "repelAttractRatio": 8.649493145577113e-17,
+      "trainResidual": 0.9999015705378081,
+      "testResidual": 0.9991694081461295,
+      "atRawScale": {
+        "scale": 1.0,
+        "repelAttractRatio": 10024036.911483536,
+        "trainResidual": 0.9999999947162308,
+        "testResidual": 1.000000063524647
+      },
+      "coarseGrid": [
+        {
+          "scale": 1e-05,
+          "repelAttractRatio": 8.408001809231432e-17,
+          "trainResidual": 0.9999015673841863,
+          "testResidual": 0.99916970929252
+        },
+        {
+          "scale": 1.778279410038923e-05,
+          "repelAttractRatio": 1.3436155378526334e-15,
+          "trainResidual": 0.9999120392757014,
+          "testResidual": 0.9991524043264213
+        },
+        {
+          "scale": 3.1622776601683795e-05,
+          "repelAttractRatio": 2.0103919605074337e-14,
+          "trainResidual": 0.9999705901050336,
+          "testResidual": 0.9993996610277069
+        },
+        {
+          "scale": 5.623413251903491e-05,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0001,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.00017782794100389227,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.00031622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0005623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.001,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0017782794100389228,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0031622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.005623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.01,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.01778279410038923,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.03162277660168379,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.05623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.1,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.1778279410038923,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.31622776601683794,
+          "repelAttractRatio": 19206.887178932997,
+          "trainResidual": 0.999999997916701,
+          "testResidual": 1.0000000895504773
+        },
+        {
+          "scale": 0.5623413251903491,
+          "repelAttractRatio": 618582.3162894007,
+          "trainResidual": 0.9999999928877842,
+          "testResidual": 1.000000120137127
+        },
+        {
+          "scale": 1.0,
+          "repelAttractRatio": 10024036.911483536,
+          "trainResidual": 0.9999999947162308,
+          "testResidual": 1.000000063524647
+        },
+        {
+          "scale": 1.7782794100389228,
+          "repelAttractRatio": 200124825.08411187,
+          "trainResidual": 0.9999999962334521,
+          "testResidual": 1.0000000398289282
+        },
+        {
+          "scale": 3.1622776601683795,
+          "repelAttractRatio": 5245147342.900234,
+          "trainResidual": 0.9999999967536296,
+          "testResidual": 1.0000000328894219
+        },
+        {
+          "scale": 5.623413251903491,
+          "repelAttractRatio": 155513237341.4413,
+          "trainResidual": 0.9999999969180637,
+          "testResidual": 1.0000000307971737
+        },
+        {
+          "scale": 10.0,
+          "repelAttractRatio": 4815950661829.95,
+          "trainResidual": 0.9999999969699107,
+          "testResidual": 1.000000030147111
+        }
+      ],
+      "scaleSearchBoundary": true
+    },
+    {
+      "law": "release-2025",
+      "duplicateNeighbors": true,
+      "scale": 1.2623070311797808,
+      "repelAttractRatio": 36.91505122183733,
+      "trainResidual": 0.9997268590213485,
+      "testResidual": 1.0000449523907649,
+      "atRawScale": {
+        "scale": 1.0,
+        "repelAttractRatio": 19.47331854024325,
+        "trainResidual": 0.9997437850349422,
+        "testResidual": 1.000066872523953
+      },
+      "coarseGrid": [
+        {
+          "scale": 1e-05,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 1.778279410038923e-05,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 3.1622776601683795e-05,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 5.623413251903491e-05,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0001,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.00017782794100389227,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.00031622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0005623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.001,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0017782794100389228,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0031622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.005623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.01,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.01778279410038923,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.03162277660168379,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.05623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.1,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.1778279410038923,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.31622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.5623413251903491,
+          "repelAttractRatio": 2.1991362492390882,
+          "trainResidual": 0.9999435455303896,
+          "testResidual": 1.0001004154739215
+        },
+        {
+          "scale": 1.0,
+          "repelAttractRatio": 19.47331854024325,
+          "trainResidual": 0.9997437850349422,
+          "testResidual": 1.000066872523953
+        },
+        {
+          "scale": 1.7782794100389228,
+          "repelAttractRatio": 89.37958271705774,
+          "trainResidual": 0.9997448614103696,
+          "testResidual": 1.0000247110969673
+        },
+        {
+          "scale": 3.1622776601683795,
+          "repelAttractRatio": 399.8964182148097,
+          "trainResidual": 0.9997893070602415,
+          "testResidual": 1.0000024389691697
+        },
+        {
+          "scale": 5.623413251903491,
+          "repelAttractRatio": 1967.0144886726112,
+          "trainResidual": 0.9998136878524488,
+          "testResidual": 0.9999913908832916
+        },
+        {
+          "scale": 10.0,
+          "repelAttractRatio": 10462.728203850813,
+          "trainResidual": 0.9998231225510029,
+          "testResidual": 0.9999874050363854
+        }
+      ],
+      "scaleSearchBoundary": false
+    },
+    {
+      "law": "cpu-2024-sqrty",
+      "duplicateNeighbors": true,
+      "scale": 9.924556205971536,
+      "repelAttractRatio": 152.9049792422382,
+      "trainResidual": 0.9994930854621792,
+      "testResidual": 0.999330632553279,
+      "atRawScale": {
+        "scale": 1.0,
+        "repelAttractRatio": 1.5289932871040395,
+        "trainResidual": 0.9995088126193732,
+        "testResidual": 0.9993480917212736
+      },
+      "coarseGrid": [
+        {
+          "scale": 1e-05,
+          "repelAttractRatio": 4.206255312376043e-14,
+          "trainResidual": 0.9998943570975887,
+          "testResidual": 0.9995544826395217
+        },
+        {
+          "scale": 1.778279410038923e-05,
+          "repelAttractRatio": 1.7187690627349766e-13,
+          "trainResidual": 0.999898182505704,
+          "testResidual": 0.999541940574845
+        },
+        {
+          "scale": 3.1622776601683795e-05,
+          "repelAttractRatio": 8.320364519634463e-13,
+          "trainResidual": 0.9999170673417478,
+          "testResidual": 0.9995430133093717
+        },
+        {
+          "scale": 5.623413251903491e-05,
+          "repelAttractRatio": 4.219558266274626e-12,
+          "trainResidual": 0.9999540955570052,
+          "testResidual": 0.9996122499809992
+        },
+        {
+          "scale": 0.0001,
+          "repelAttractRatio": 1.8067652217356318e-11,
+          "trainResidual": 0.9999864210864551,
+          "testResidual": 0.9997677984377954
+        },
+        {
+          "scale": 0.00017782794100389227,
+          "repelAttractRatio": 4.004437432935717e-11,
+          "trainResidual": 0.9999990778648772,
+          "testResidual": 0.9999375137250307
+        },
+        {
+          "scale": 0.00031622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0005623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.001,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0017782794100389228,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0031622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.005623413251903491,
+          "repelAttractRatio": 8.123784925661944e-07,
+          "trainResidual": 0.9999998195452137,
+          "testResidual": 0.9999895746540568
+        },
+        {
+          "scale": 0.01,
+          "repelAttractRatio": 2.050364797248625e-05,
+          "trainResidual": 0.9999902951990889,
+          "testResidual": 0.9999365187617005
+        },
+        {
+          "scale": 0.01778279410038923,
+          "repelAttractRatio": 0.00015144499052041377,
+          "trainResidual": 0.9999514100645773,
+          "testResidual": 0.9998626918600522
+        },
+        {
+          "scale": 0.03162277660168379,
+          "repelAttractRatio": 0.0007638773716294081,
+          "trainResidual": 0.9998802411376682,
+          "testResidual": 0.9997788190689204
+        },
+        {
+          "scale": 0.05623413251903491,
+          "repelAttractRatio": 0.0030761803308332098,
+          "trainResidual": 0.9998065444918106,
+          "testResidual": 0.9996901533227345
+        },
+        {
+          "scale": 0.1,
+          "repelAttractRatio": 0.011306112453682978,
+          "trainResidual": 0.9997370497119598,
+          "testResidual": 0.9995947453286395
+        },
+        {
+          "scale": 0.1778279410038923,
+          "repelAttractRatio": 0.040566467964710466,
+          "trainResidual": 0.9996586107849953,
+          "testResidual": 0.9995031524991734
+        },
+        {
+          "scale": 0.31622776601683794,
+          "repelAttractRatio": 0.1409972511949429,
+          "trainResidual": 0.999584733717947,
+          "testResidual": 0.9994273820238508
+        },
+        {
+          "scale": 0.5623413251903491,
+          "repelAttractRatio": 0.47111828294060737,
+          "trainResidual": 0.9995345285888848,
+          "testResidual": 0.9993756763953089
+        },
+        {
+          "scale": 1.0,
+          "repelAttractRatio": 1.5289932871040395,
+          "trainResidual": 0.9995088126193732,
+          "testResidual": 0.9993480917212736
+        },
+        {
+          "scale": 1.7782794100389228,
+          "repelAttractRatio": 4.884474184522747,
+          "trainResidual": 0.9994983506362785,
+          "testResidual": 0.9993365366135434
+        },
+        {
+          "scale": 3.1622776601683795,
+          "repelAttractRatio": 15.500416596935393,
+          "trainResidual": 0.9994946755888596,
+          "testResidual": 0.9993324222876414
+        },
+        {
+          "scale": 5.623413251903491,
+          "repelAttractRatio": 49.072863928136314,
+          "trainResidual": 0.9994934690323383,
+          "testResidual": 0.9993310648098704
+        },
+        {
+          "scale": 10.0,
+          "repelAttractRatio": 155.23890226871856,
+          "trainResidual": 0.9994930827274754,
+          "testResidual": 0.9993306294702273
+        }
+      ],
+      "scaleSearchBoundary": true
+    },
+    {
+      "law": "cpu-2024-quartic",
+      "duplicateNeighbors": true,
+      "scale": 1.0076017297360948e-05,
+      "repelAttractRatio": 9.85798069493191e-17,
+      "trainResidual": 0.999940792714676,
+      "testResidual": 0.9995044484806992,
+      "atRawScale": {
+        "scale": 1.0,
+        "repelAttractRatio": 0.0,
+        "trainResidual": 1.0,
+        "testResidual": 1.0
+      },
+      "coarseGrid": [
+        {
+          "scale": 1e-05,
+          "repelAttractRatio": 9.526423017023922e-17,
+          "trainResidual": 0.9999407240872688,
+          "testResidual": 0.9995044507604627
+        },
+        {
+          "scale": 1.778279410038923e-05,
+          "repelAttractRatio": 1.4013279366203659e-15,
+          "trainResidual": 0.9999551169825082,
+          "testResidual": 0.9995315780748579
+        },
+        {
+          "scale": 3.1622776601683795e-05,
+          "repelAttractRatio": 1.2584398825329322e-14,
+          "trainResidual": 0.9999945941606704,
+          "testResidual": 0.9998061881465106
+        },
+        {
+          "scale": 5.623413251903491e-05,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0001,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.00017782794100389227,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.00031622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0005623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.001,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0017782794100389228,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.0031622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.005623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.01,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.01778279410038923,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.03162277660168379,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.05623413251903491,
+          "repelAttractRatio": 43.7682504086505,
+          "trainResidual": 0.9999999804016432,
+          "testResidual": 1.0000003497326677
+        },
+        {
+          "scale": 0.1,
+          "repelAttractRatio": 1258.1693132941903,
+          "trainResidual": 0.9999998609373657,
+          "testResidual": 1.0000008197582184
+        },
+        {
+          "scale": 0.1778279410038923,
+          "repelAttractRatio": 10435.94548098598,
+          "trainResidual": 0.9999999359147402,
+          "testResidual": 1.0000004864822587
+        },
+        {
+          "scale": 0.31622776601683794,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 0.5623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 1.0,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 1.7782794100389228,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 3.1622776601683795,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 5.623413251903491,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        },
+        {
+          "scale": 10.0,
+          "repelAttractRatio": 0.0,
+          "trainResidual": 1.0,
+          "testResidual": 1.0
+        }
+      ],
+      "scaleSearchBoundary": true
+    }
+  ]
+}

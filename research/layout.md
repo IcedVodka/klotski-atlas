@@ -2,6 +2,8 @@
 
 ## 结论
 
+2026-10-12 的进一步追查、纯 C++ 历史公式和实测参数对照见 [原始参数追查](parameter-recovery.md)。本文以下力学公式和视频过程均指 2025 年视频发布版本，不能直接当成旧网页数据的生成配置。
+
 作者使用的是**自定义力导向图布局**，主要由全局排斥、非线性边力、速度阻尼、镜像约束和四维坐标松弛组成。较大的图通过 CUDA 和均匀空间分桶加速。这里的源码不是标准 Fruchterman–Reingold、ForceAtlas2、t-SNE 或 UMAP 的直接调用，也不是 Barnes–Hut 八叉树。
 
 本项目已经从原始拓扑重新生成 25,955 个节点的坐标，并可在页面「布局对照」中切换。复现的是历史源码中的力学模型及主要设计，**不是作者坐标的逐点或逐位还原**。
@@ -127,6 +129,7 @@ p_i.w *= clamp(dimensions - 3, 0, 1)
 
 ```sh
 python3 scripts/generate_layout.py
+python3 tests/test_topology.py
 python3 tests/test_layout.py
 npm test
 

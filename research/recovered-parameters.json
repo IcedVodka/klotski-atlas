@@ -1,0 +1,113 @@
+{
+  "status": "Video-script values recovered; original web-generation configuration not recovered",
+  "webDataCommit": "069d99b393eb06c37402598393806d84a41813ae",
+  "video": {
+    "commit": "2c7d90dda292ea12245ed90115eb20002fbc3c26",
+    "sources": {
+      "src/Projects/Klotski.cpp": "https://github.com/2swap/swaptube/blob/2c7d90dda292ea12245ed90115eb20002fbc3c26/src/Projects/Klotski.cpp",
+      "src/Scenes/Math/GraphScene.cpp": "https://github.com/2swap/swaptube/blob/2c7d90dda292ea12245ed90115eb20002fbc3c26/src/Scenes/Math/GraphScene.cpp",
+      "src/DataObjects/Graph.cpp": "https://github.com/2swap/swaptube/blob/2c7d90dda292ea12245ed90115eb20002fbc3c26/src/DataObjects/Graph.cpp",
+      "src/CUDA/GraphSpread.cu": "https://github.com/2swap/swaptube/blob/2c7d90dda292ea12245ed90115eb20002fbc3c26/src/CUDA/GraphSpread.cu",
+      "src/misc/inlines.h": "https://github.com/2swap/swaptube/blob/2c7d90dda292ea12245ed90115eb20002fbc3c26/src/misc/inlines.h",
+      "src/io/Macroblock.cpp": "https://github.com/2swap/swaptube/blob/2c7d90dda292ea12245ed90115eb20002fbc3c26/src/io/Macroblock.cpp",
+      "src/Scenes/Scene.cpp": "https://github.com/2swap/swaptube/blob/2c7d90dda292ea12245ed90115eb20002fbc3c26/src/Scenes/Scene.cpp",
+      "go.sh": "https://github.com/2swap/swaptube/blob/2c7d90dda292ea12245ed90115eb20002fbc3c26/go.sh"
+    },
+    "repel": 1,
+    "attract": 1,
+    "speedLimit": 20,
+    "gridSize": 10,
+    "exactThreshold": 5000,
+    "centeringStrength": 0.1,
+    "fpsInGoSh": 30,
+    "interpolation": "smoother2(t) = t<0.5 ? 2*t*t : 1-2*(1-t)*(1-t)",
+    "stages": [
+      {
+        "name": "initial",
+        "nodesAdded": 200,
+        "physicsPerFrame": 5,
+        "decay": 0.92,
+        "dimensions": 2.98,
+        "mirrorForce": 0
+      },
+      {
+        "name": "transition",
+        "nodesAdded": 100,
+        "physicsPerFrame": [
+          5,
+          800
+        ],
+        "decay": [
+          0.92,
+          0.65
+        ],
+        "dimensions": [
+          2.98,
+          3.98
+        ],
+        "mirrorForce": [
+          0,
+          0.003
+        ]
+      },
+      {
+        "name": "remaining growth",
+        "nodeIncrement": "int(ii*ii/7), float ii starts at 3, ii += 0.2 each batch",
+        "requestedSecondsPerBatch": 0.033333,
+        "physicsPerFrame": 800,
+        "decay": 0.65,
+        "dimensions": 3.98,
+        "mirrorForce": 0.003
+      },
+      {
+        "name": "settle",
+        "seconds": 7.5,
+        "physicsPerFrame": [
+          800,
+          400
+        ],
+        "dimensions": [
+          3.98,
+          3.95
+        ]
+      },
+      {
+        "name": "freeze",
+        "seconds": 7.5,
+        "physicsPerFrame": [
+          400,
+          0
+        ],
+        "dimensions": [
+          3.95,
+          3
+        ]
+      }
+    ],
+    "timingCaveat": "Actual frame count uses accumulated audio time minus video time; voice audio lengths and prior timeline affect rounding. Silence duration times FPS alone is insufficient."
+  },
+  "earlyCpu": {
+    "commit": "13842105e1c2a97b0e168d55601e4f5807cde0e2",
+    "source": "https://github.com/2swap/swaptube/blob/13842105e1c2a97b0e168d55601e4f5807cde0e2/src/scenes/Graph.cpp",
+    "provenance": "Historical SwapTube code; not established as the exact Old-Graph-Spreader revision used for web coordinates",
+    "classDefaults": {
+      "decay": 0.9,
+      "speedLimit": 3,
+      "repel": 1,
+      "attract": 1,
+      "dimensions": 2,
+      "sqrty": true,
+      "gravityStrength": 0
+    },
+    "randomInitialization": "C rand()/RAND_MAX, double positions and velocities in [0,1]",
+    "fourthDimensionRetentionWhenEnabled": 0.9
+  },
+  "unrecovered": [
+    "Old-Graph-Spreader exact revision and run configuration",
+    "Web dataset random seed and PRNG state",
+    "Insertion and hash traversal order",
+    "Complete growth/iteration/parameter-change history",
+    "Hidden fourth coordinates and velocities at export",
+    "Any manual layout edits or coordinate postprocessing"
+  ]
+}
